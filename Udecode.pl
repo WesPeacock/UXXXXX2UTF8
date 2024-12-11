@@ -4,24 +4,28 @@
 # inverse of Ucode.pl
 use 5.016;
 use strict;
+use open qw(:std :utf8);
 binmode STDOUT, ':utf8';
 my $vernacularSFMs = qr{lx|xe|se};
-while (<>) {
-   if (m/(\\($vernacularSFMs) )(.*?)(\R)/) {
+while (my $line = <>) {
+   if ($line =~ m/(\\($vernacularSFMs) )(.*?)(\R)/) {
 	   my $sfm=$2;
 	   my $vernaculartxt = $3;
 	   my $eol = $4;
-	   my @num =  split (/U\+/, $vernaculartxt);
-	   print '\\', $sfm, ' ' ;
-	   for my $n (@num) {
-		 # say STDERR $n;
-		 next if !$n; #skip first null
-		 print chr(hex($n));
-		 }
-	print $eol;
+	   my $vtxt = u2txt($vernaculartxt);
+	   $line =  "\\" . $sfm . ' ' .$vtxt . $eol;
 	   }
-else {
-	print $_;
-	}
-
+   print $line;
 } 
+
+sub u2txt{
+my ($txtstring) = @_;
+
+my $vstring = "";
+my @num =  split (/U\+/, $txtstring);
+for my $n (@num) {
+   next if !$n; #skip first null
+   $vstring = $vstring . chr(hex($n));
+   }
+return $vstring;
+}

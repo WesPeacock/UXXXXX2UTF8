@@ -9,23 +9,28 @@
 # $echo '\lx hello' |./Ucode.pl
 # \lx U+0068U+0065U+006CU+006CU+006F
 # see also Udecode.pl
-
+use 5.016;
 use strict;
+use open qw(:std :utf8);
 my $vernacularSFMs = qr{lx|xe|se};
-while (<>) {
-   if (m/(\\($vernacularSFMs) )(.*?)(\R)/) {
+while (my $line = <>) {
+   if ($line =~ m/(\\($vernacularSFMs) )(.*?)(\R)/) {
 	   my $sfm=$2;
 	   my $vernaculartxt = $3;
 	   my $eol = $4;
-	   my @ch =  split (//, $vernaculartxt);
-	   print '\\', $sfm, ' ' ;
-	   for my $c (@ch) {
-		   printf  "U+%04X", ord($c);
-		   }
-	print $eol;
+	   my $utxt = txt2u ($vernaculartxt);
+	   $line = "\\" . $sfm . ' ' .$utxt . $eol;
 	   }
-else {
-	print $_;
+   print $line;
 	}
 
-} 
+sub txt2u{
+my ($txtstring) = @_;
+
+my $ustring = "";
+my @ch =  split (//, $txtstring);
+for my $c (@ch) {
+   $ustring = $ustring . sprintf  "U+%04X", ord($c);
+   }
+return $ustring;
+}
