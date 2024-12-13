@@ -21,6 +21,7 @@ while (my $line = <>) {
 sub u2txt{
 my ($txtstring) = @_;
 
+return $txtstring if $txtstring !~ m/U\+/;
 my $vstring = "";
 my @num =  split (/U\+/, $txtstring);
 for my $n (@num) {
