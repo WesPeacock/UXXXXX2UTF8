@@ -1,12 +1,26 @@
 #!/usr/bin/perl
-# perl Udecode.pl
+my $USAGE = "Usage: $0 [--sfms lx,se,xv] [--help]";
+# perl Udecode.pl --sfms lx,se,xv
 # convert SFM fields that contain a series of U+XXXXX sequences to Unicode text
 # inverse of Ucode.pl
 use 5.016;
 use strict;
 use open qw(:std :utf8);
 binmode STDOUT, ':utf8';
-my $vernacularSFMs = qr{lx|xe|se};
+use Getopt::Long;
+GetOptions (
+	'sfms:s'   => \(my $sfms = "lx,se,xv"), # Standard format fields to correct
+	'help'    => \my $help,
+	) or die $USAGE;
+
+if ($help) {
+	say STDERR $USAGE;
+	exit;
+	}
+
+$sfms =~  s/,/\|/g;
+my $vernacularSFMs = qr{$sfms};
+
 while (my $line = <>) {
    if ($line =~ m/(\\($vernacularSFMs) )(.*?)(\R)/) {
 	   my $sfm=$2;
