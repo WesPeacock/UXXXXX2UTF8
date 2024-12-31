@@ -1,0 +1,16 @@
+# Perl code for UTF8 to U+XXXXX
+# Add the Converter by copying just the previous line to the Setup Box
+# and click the Save in Repository button.
+# Change the name to a useful name e.g.: UTF8 to U+XXXXX
+# In the Setup box, replace the first line with the following code and save it to the Repository
+$strInOut = txt2u($strInOut);
+sub txt2u{
+my ($txtstring) = @_;
+
+my $ustring = "";
+my @ch =  split (//, $txtstring);
+for my $c (@ch) {
+   $ustring = $ustring . sprintf  "U+%04X", ord($c);
+   }
+return $ustring;
+};

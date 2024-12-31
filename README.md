@@ -20,4 +20,17 @@ Required Software:
 
 ![Perl Expressions](./Perl%20Expresssions.png "Perl Expressions Transduction Engine")
 
+## Encoding UTF8 to U+XXXXX
+The perl script `Ucode.pl` converts text from UTF-8 to U+XXXXX format.
+The texts of specified SFMs to be converted (lx, se and xv are the defaults).
+For example, this line from the Sample SFM file
+````
+\lx ellohay👋 orldway🌐
+````
+is changed to:
+````
+\lx U+0065U+006CU+006CU+006FU+0068U+0061U+0079U+1F44BU+0020U+006FU+0072U+006CU+0064U+0077U+0061U+0079U+1F310
+````
+Code for creating a Converter that does this in the SIL Encoding Converters is in *Ucodesnippet.txt*
+
 
