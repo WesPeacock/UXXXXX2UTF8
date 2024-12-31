@@ -33,4 +33,16 @@ is changed to:
 ````
 Code for creating a Converter that does this in the SIL Encoding Converters is in *Ucodesnippet.txt*
 
-
+## Decoding U+XXXXX to UTF8
+This section discusses the decode process which is the inverse function of the previous section.
+The perl script `Udecode.pl` converts text from U+XXXXX to UTF-8 format.
+The texts of specified SFMs to be converted (lx, se and xv are the defaults).
+For example, this line from the Sample SFM file
+````
+\lx U+0065U+006CU+006CU+006FU+0068U+0061U+0079U+1F44BU+0020U+006FU+0072U+006CU+0064U+0077U+0061U+0079U+1F310
+````
+is changed to:
+````
+\lx ellohay👋 orldway🌐
+````
+Code for creating a Converter that does this in the SIL Encoding Converters is in *Udecodesnippet.txt*

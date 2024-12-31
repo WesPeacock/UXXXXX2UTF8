@@ -1,0 +1,18 @@
+# Perl code for U+XXXXX to UTF8
+# Add the Converter by copying just the previous line to the Setup Box
+# and click the Save in Repository button.
+# Change the name to a useful name e.g.: U+XXXXX to UTF8
+# In the Setup box, replace the first line with the following code and save it to the Repository
+$strInOut = u2txt($strInOut);
+sub u2txt{
+my ($txtstring) = @_;
+
+return $txtstring if $txtstring !~ m/U\+/;
+my $vstring = "";
+my @num =  split (/U\+/, $txtstring);
+for my $n (@num) {
+   next if !$n; #skip first null
+   $vstring = $vstring . chr(hex($n));
+   }
+return $vstring;
+};
