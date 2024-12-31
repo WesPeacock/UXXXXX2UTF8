@@ -18,6 +18,6 @@ Required Software:
 2) A version of Perl must be installed on Windows. Strawberry Perl is recommended. Available [here.](https://strawberryperl.com/)
 3) The SIL Encoding Converters. Available [here](https://software.sil.org/silconverters/) Make sure the Perl Expressions Transduction Engine is selected.:
 
-![](./Perl%20Expresssions.png)
+![Perl Expressions](./Perl%20Expresssions.png "Perl Expressions Transduction Engine")
 
 
