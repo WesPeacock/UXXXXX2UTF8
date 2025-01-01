@@ -32,7 +32,15 @@ is changed to:
 \lx U+0065U+006CU+006CU+006FU+0068U+0061U+0079U+1F44BU+0020U+006FU+0072U+006CU+0064U+0077U+0061U+0079U+1F310
 ````
 Code for creating a Converter that does this in the SIL Encoding Converters is in *Ucodesnippet.txt*
-
+### Bugs In SIL Perl Encoding Converter
+The SIL Perl Encoding Converter has two bugs.
+The code included in the snippets contains work-arounds to avoid the bugs, but care must be taken to follow exactly the instruction in the code snippets.
+Here are the bugs that are avoided:
+  - The code passed to the converter must end with a semicolon.
+	- The converter will accept code without a trailing semicolon, but it will fail with an obscure message on execution.
+  - The Encoding Converter tries to use the Perl code to create a name for the converter. Some Perl code causes a crash when it tries to create a dialog box for the name.
+	- If you initially create a converter using simple perl code, you can create a dummy converter and name it what you want.
+	- Once the converter is created and named, you can modify it to use the code that does the work, but would otherwise cause the name dialog box to crash.
 ## Decoding U+XXXXX to UTF8
 This section discusses the decode process which is the inverse function of the previous section.
 The perl script `Udecode.pl` converts text from U+XXXXX to UTF-8 format.
@@ -46,3 +54,5 @@ is changed to:
 \lx ellohay👋 orldway🌐
 ````
 Code for creating a Converter that does this in the SIL Encoding Converters is in *Udecodesnippet.txt*
+
+The note above about bugs in the Perl Encoding Converter also apply here.
