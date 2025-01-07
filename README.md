@@ -2,7 +2,7 @@
 
 A series of scripts for converting UTF-8 text to and from U+XXXXX format.
 
-The Standard Format import function of FLEx doesn't handle UTF-8 characters from every Unicode block properly.
+The Standard Format import function of FLEx doesn't properly handle UTF-8 characters from the Unicode [Supplementary Multilingual Plane](https://en.wiktionary.org/wiki/Appendix:Unicode#Plane_1:_Supplementary_Multilingual_Plane).
 This repo provides a work-around for this problem.
 
 The work-around uses two scripts written in Perl.
