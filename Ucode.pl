@@ -44,7 +44,7 @@ my ($txtstring) = @_;
 my $ustring = "";
 my @ch =  split (//, $txtstring);
 for my $c (@ch) {
-   $ustring = $ustring . sprintf  "U+%04X", ord($c);
+   $ustring = $ustring . sprintf  "U+%04X_", ord($c);
    }
 return $ustring;
 }
