@@ -59,3 +59,7 @@ is changed to:
 Code for creating a Converter that does this in the SIL Encoding Converters is in *Udecodesnippet.txt*
 
 The note above about bugs in the Perl Encoding Converter also apply here.
+
+## Notes on the U+XXXXX_ encoding scheme
+The U+XXXXX_ encoding scheme was specifically chosen rather than the equivalent HTML \&#xXXXXX; encoding. This was done because it will not be interpreted by any program likely to be handling the data.
+The trailing underscore disambiguates additional hexidecimal data (e.g., homograph numbers) following the data.
