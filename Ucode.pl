@@ -40,11 +40,6 @@ while (my $line = <>) {
 
 sub txt2u{
 my ($txtstring) = @_;
-
-my $ustring = "";
-my @ch =  split (//, $txtstring);
-for my $c (@ch) {
-   $ustring = $ustring . ($c lt "\x{10000}" ? $c : sprintf  "U+%04X_", ord($c));
-   }
-return $ustring;
+$txtstring =~ s/([\x{10000}-\x{1FFFF}])/sprintf  "U+%04X_", ord($1)/ge;
+return $txtstring;
 }
