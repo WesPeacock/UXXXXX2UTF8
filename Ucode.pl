@@ -1,15 +1,15 @@
 #!/usr/bin/perl
 my $USAGE = "Usage: $0 [--sfms lx,se,xv] [--help]";
 # perl Ucode.pl --sfms lx,se,xv
-# convert the text of venacular fields to Unicode U+XXXXX format
+# convert the text of venacular fields from Unicode Plane 1 text to U+XXXXX_ format
 # The SFM fields to be converted are specified in a comma separated
 # string by the --sfms option; the default is lx,se,xv
 # 
-# Originally planned as a scheme for Unicode planes that cannot be imported by the FLEx SFM import.
-#  I.e., convert the fields to U+XXXXX format, import them inot FLEx and use tthe perl code execution in FLEx to decode
+# A scheme for Unicode plane 1 characters that cannot be imported by the FLEx SFM import.
+#  I.e., convert the fields Unicode plane 1 characters to U+XXXXX_ format, import them into FLEx and use the perl code execution in FLEx to decode
 # For Example:
-# $echo '\lx hello' |./Ucode.pl
-# \lx U+0068U+0065U+006CU+006CU+006F
+# $echo '\lx hello👋' |./Ucode.pl
+# \lx helloU+1F44B_
 # see also Udecode.pl
 use 5.016;
 use strict;

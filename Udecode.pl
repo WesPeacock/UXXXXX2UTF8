@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 my $USAGE = "Usage: $0 [--sfms lx,se,xv] [--help]";
 # perl Udecode.pl --sfms lx,se,xv
-# convert SFM fields that contain a series of U+XXXXX_ sequences to Unicode text
+# convert SFM fields that contain U+XXXXX_ sequences to Unicode text
 # inverse of Ucode.pl
 use 5.016;
 use strict;
