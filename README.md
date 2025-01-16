@@ -65,7 +65,6 @@ The note above about bugs in the Perl Encoding Converter also apply here.
 Rather than encoding/decoding just certain SFMs, you may want to process an entire file.
 The scripts `UcodeTxt.pl` and `UdecodeTxt.pl` will do that.
 Running the `UdecodeTxt.pl`  on a FLEx fwdata file should be able to decode the entire FLEx project, although this has not been tested.
-
-## Notes on the U+XXXXX_ encoding scheme
+## Notes on the U+XXXXX_ encoding scheme
 The U+XXXXX_ encoding scheme was specifically chosen rather than the equivalent HTML \&#xXXXXX; encoding. This was done because it will not be interpreted by any program likely to be handling the data.
 The trailing underscore disambiguates additional hexidecimal data (e.g., homograph numbers) following the data.
